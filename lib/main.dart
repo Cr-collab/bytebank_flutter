@@ -1,5 +1,19 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Text('Bem vindo ao Bytebank', textDirection: TextDirection.rtl ,textAlign:  TextAlign.center, overflow: TextOverflow.ellipsis,));
+  runApp(Column(
+    children: <Widget>[
+      Text(
+        "Cristiano Azevedo",
+        textDirection: TextDirection.ltr,
+      ),
+      Text("Cristiano Azevedo - ", textDirection: TextDirection.rtl),
+      Expanded(
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: const FlutterLogo(),
+        ),
+      ),
+    ],
+  ));
 }
