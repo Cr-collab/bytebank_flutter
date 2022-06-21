@@ -3,20 +3,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     home: Scaffold(
-      body: Column(children: <Widget>[
-        Card(
-            child: ListTile(
-          leading: Icon(Icons.monetization_on),
-          title: Text("100.00"),
-          subtitle: Text('45085-9'),
-        )),
-        Card(
-            child: ListTile(
-          leading: Icon(Icons.monetization_on),
-          title: Text("100.00"),
-          subtitle: Text('45085-9'),
-        ))
-      ]),
+      body: ListaTransFerencias(),
       appBar: AppBar(
         title: Text("Transferencias"),
       ),
@@ -31,3 +18,38 @@ void main() {
   ));
 }
 
+class ListaTransFerencias extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Column(children: <Widget>[
+      ItemTransferencia(Transferencia(100.00, 505010)),
+      ItemTransferencia(Transferencia(200.00, 505010)),
+      ItemTransferencia(Transferencia(400.00, 505010)),
+      
+    ]);
+  }
+}
+
+class ItemTransferencia extends StatelessWidget {
+final Transferencia _transferencia;
+
+  const ItemTransferencia(this._transferencia);
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+        child: ListTile(
+      leading: Icon(Icons.monetization_on),
+      title: Text(_transferencia.value.toString()),
+      subtitle: Text(_transferencia.accountNumber.toString()),
+    ));
+  }
+}
+
+class Transferencia {
+  final double value;
+  final int accountNumber;
+
+  Transferencia(this.value, this.accountNumber);
+  
+}
