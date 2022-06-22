@@ -1,12 +1,40 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Scaffold(
-      body: ListaTransFerencias(),
-      appBar: AppBar(
-        title: Text("Transferencias"),
+  runApp(BytebankApp());
+}
+
+class BytebankApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: FormularioTransferencia(),
       ),
+    );
+  }
+}
+
+class FormularioTransferencia extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Criando transferencia")),
+      body: Text("teste1"),
+    );
+  }
+}
+
+class ListaTransFerencias extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      body: Column(children: <Widget>[
+        ItemTransferencia(Transferencia(100.00, 505010)),
+        ItemTransferencia(Transferencia(200.00, 505010)),
+        ItemTransferencia(Transferencia(400.00, 505010)),
+      ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Add your onPressed code here!
@@ -14,25 +42,15 @@ void main() {
         backgroundColor: Colors.blue,
         child: const Icon(Icons.add),
       ),
-    ),
-  ));
-}
-
-class ListaTransFerencias extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Column(children: <Widget>[
-      ItemTransferencia(Transferencia(100.00, 505010)),
-      ItemTransferencia(Transferencia(200.00, 505010)),
-      ItemTransferencia(Transferencia(400.00, 505010)),
-      
-    ]);
+      appBar: AppBar(
+        title: Text("Transferencias"),
+      ),
+    );
   }
 }
 
 class ItemTransferencia extends StatelessWidget {
-final Transferencia _transferencia;
+  final Transferencia _transferencia;
 
   const ItemTransferencia(this._transferencia);
   @override
@@ -51,5 +69,4 @@ class Transferencia {
   final int accountNumber;
 
   Transferencia(this.value, this.accountNumber);
-  
 }
